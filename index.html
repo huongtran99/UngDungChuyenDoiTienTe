@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng Dụng Chuyển Đổi Tiền Tệ</title>
+</head>
+<body>
+<form method="get" action="#">
+
+    <table cellpadding="1px">
+        <tr>
+            <th>Amount</th>
+            <th style="padding-left: 50px">From Currency</th>
+            <th style="padding-left: 50px">To Currency</th>
+        </tr>
+
+        <tr>
+            <td><input id="amount" type="text" size="10px"></td>
+            <td style="padding-left: 50px">
+                <select style="width: 120px; height: 22px" id="from" onchange="changeSelectValue()">
+                    <option id="1" value="vn">VietNam</option>
+                    <option id="2" value="usd">USD</option>
+                </select>
+            </td>
+            <td style="padding-left: 50px">
+                <select style="width: 100px; height: 22px" id="to" onchange="changeSelectValue2()">
+                    <option id="3" value="usd">USD</option>
+                    <option id="4" value="vn">VietNam</option>
+                </select>
+            </td>
+            <td style="padding-left: 50px;"><button style="background-color: blueviolet;color: white" onclick="vn_to_usd()">Convert</button></td>
+        </tr>
+
+        <tr>
+            <td colspan="4">
+                <span style="color: blue;" id="result"></span>
+            </td>
+
+        </tr>
+    </table>
+</form>
+
+<script>
+
+    function vn_to_usd() {
+        let amount = parseInt(document.getElementById("amount").value);
+        let s = document.getElementById("from").value;
+
+        if (s == "vn") {
+            let usd = amount / 23000;
+            document.getElementById("result").innerHTML = "Result :" + usd + " USD";
+        } else {
+            let vn = 23000 * amount;
+            document.getElementById("result").innerHTML = "Result :" + vn + " VND";
+        }
+
+    }
+
+    function changeSelectValue() {
+        let s = document.getElementById("from").value;
+        let d = document.getElementById("3");
+        let e = document.getElementById("4");
+        if (s === "vn") {
+            d.selected = true;
+        } else {
+            e.selected = true;
+        }
+    }
+
+    function changeSelectValue2() {
+        let s = document.getElementById("to").value;
+        let d = document.getElementById("1");
+        let e = document.getElementById("2");
+        if (s === "usd") {
+            d.selected = true;
+        } else {
+            e.selected = true;
+        }
+    }
+
+
+</script>
+</body>
+</html>
